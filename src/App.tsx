@@ -29,7 +29,7 @@ import { endpoint } from './protocols'
 import { emptyResult, runRequest } from './runner'
 import { extractPreviews, makePreviewDocument } from './preview'
 import type { Protocol, RequestConfig } from './types'
-import Pelican from './Pelican'
+import ExamplePreview from './ExamplePreview'
 import ThinkingSettings from './ThinkingSettings'
 const ReplyViewer = lazy(() => import('./ReplyViewer'))
 
@@ -582,24 +582,19 @@ export default function App() {
                 </Suspense>
               )}
               {result.status === 'idle' ? (
-                <div className="empty-state">
-                  <div className="art-label">
-                    THE PELICAN CHALLENGE <span>↗</span>
+                tab === 'preview' ? (
+                  <ExamplePreview />
+                ) : (
+                  <div className="empty-state compact">
+                    {tab === 'reply' ? (
+                      <Terminal size={36} strokeWidth={1} />
+                    ) : (
+                      <Code2 size={36} strokeWidth={1} />
+                    )}
+                    <h3>{tab === 'reply' ? '等待模型回复' : '等待原始响应'}</h3>
+                    <p>填入模型配置，点击「开始测试」，在这里查看结果。</p>
                   </div>
-                  <Pelican />
-                  <h3>一只鹈鹕，无限种可能。</h3>
-                  <p>
-                    填入模型配置，点击「开始测试」
-                    <br />
-                    看看你的模型会如何描绘这一刻。
-                  </p>
-                  <div className="empty-chips">
-                    <span>SVG 绘制</span>
-                    <span>2D 动画</span>
-                    <span>模型创造力</span>
-                  </div>
-                  <div className="illustration-note">示意插画 · 你的模型作品将在这里呈现</div>
-                </div>
+                )
               ) : tab === 'preview' ? (
                 candidate ? (
                   <div className="preview-stage">

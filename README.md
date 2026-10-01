@@ -15,6 +15,8 @@ npm run dev
 
 ## 使用方法
 
+首次打开时，动画预览默认展示 GPT 的鹈鹕骑行作品；上方 GPT / Claude 按钮可点击或用左右方向键切换完整动画示例。示例保留暂停与速度控制，不会发起模型请求或修改连接配置。开始测试后，此区域展示你的生成结果。
+
 1. 选择接口协议。兼容 OpenAI 的服务可选择 Chat Completions。
 2. 填写 Base URL、API Key 和服务商提供的准确模型 ID。
 3. 保留默认鹈鹕提示词，或输入任意文本任务。支持复制、清空和恢复默认。
@@ -124,6 +126,6 @@ npm run test:e2e
 - `src/ThinkingSettings.tsx` / `ReplyViewer.tsx` / `MarkdownContent.tsx`：思考配置、折叠与滚动阅读、安全 Markdown 排版。
 - `src/preview.ts`：作品提取和沙盒文档构造。
 - `src/config.ts` / `types.ts`：默认提示词、配置持久化和公共内部类型。
-- `src/Pelican.tsx`：页面空状态原创 SVG 插画，不是模型输出。
+- `src/ExamplePreview.tsx`：首次测试前的 GPT / Claude 预置动画切换，加载 `public/` 中的完整 HTML 示例。
 
 协议参考：[OpenAI Chat Completions](https://platform.openai.com/docs/api-reference/chat/create)、[OpenAI Responses](https://platform.openai.com/docs/api-reference/responses)、[Anthropic Messages](https://platform.claude.com/docs/en/api/messages/create)、[Gemini Generate Content](https://ai.google.dev/api/generate-content)。

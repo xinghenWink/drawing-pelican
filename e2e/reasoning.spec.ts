@@ -102,6 +102,8 @@ test('手动折叠优先，页签切换保留状态与阅读位置，向上阅�
     ),
   )
   await expect(toggle).toHaveAttribute('aria-expanded', 'true')
+  // 等待长正文真正渲染，避免在内容仍很短时误判已经滚动到底部。
+  await expect(page.locator('.answer-body p')).toHaveCount(80)
   const scroll = page.locator('.reply-scroll')
   await expect
     .poll(() => scroll.evaluate((node) => node.scrollHeight - node.clientHeight - node.scrollTop))

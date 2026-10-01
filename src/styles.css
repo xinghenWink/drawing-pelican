@@ -954,6 +954,81 @@ textarea {
   background: #fbfcf7;
   border-top: 1px solid var(--line);
 }
+/* 预置作品沿用预览容器，切换控件与请求配置相互独立。 */
+.example-preview {
+  position: relative;
+  inset: auto;
+}
+/* 完整示例含标题与播放控制，按宽度扩展高度，避免初始画面截断车轮。 */
+.example-preview iframe {
+  flex: none;
+  height: auto;
+  aspect-ratio: 1.05;
+  min-height: 720px;
+}
+.example-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 10px 16px;
+  background: #fbfcf8;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.example-switch {
+  display: flex;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #f2f5ed;
+}
+.example-switch > button {
+  border: 0;
+  border-radius: 4px;
+  padding: 6px 17px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+}
+.example-switch > button:hover {
+  color: var(--green);
+}
+.example-switch > button[aria-pressed='true'] {
+  background: var(--green);
+  color: #fff;
+  font-weight: 600;
+}
+.example-caption {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 10px;
+}
+.example-badge {
+  padding: 3px 6px;
+  border: 1px solid #e1e8d8;
+  border-radius: 4px;
+  color: #718561;
+  background: #f2f6ed;
+}
+.example-model {
+  font-family: Consolas, monospace;
+}
+.example-preview .preview-footnote {
+  flex-shrink: 0;
+  text-align: center;
+  line-height: 1.6;
+}
+@media (max-width: 767px) {
+  .example-preview iframe {
+    min-height: 540px;
+  }
+}
 .result-content:fullscreen {
   min-height: 100vh;
   background: #fff;
